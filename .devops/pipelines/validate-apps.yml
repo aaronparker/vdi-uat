@@ -1,0 +1,58 @@
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+# This pipeline validates a UAT image via the Azure Pipelines agent
+
+trigger:
+    branches:
+        include: [ main ]
+    paths:
+        include: [ "tests/**" ]
+
+pool: 'Azure Virtual Desktop aue'
+
+steps:
+- powershell: |
+    $params = @{
+      Name               = "Pester"
+      SkipPublisherCheck = $true
+      Force              = $true
+      ErrorAction        = "Stop"
+    }
+    Install-Module @params
+  name: pester
+  displayName: 'Install Pester'
+  workingDirectory: $(build.sourcesDirectory)
+  errorActionPreference: continue
+  continueOnError: false
+
+- powershell: |
+    Import-Module -Name "Pester" -Force -ErrorAction "Stop"
+    $Config = New-PesterConfiguration
+    $Config.Run.Path = "$(build.sourcesDirectory)\tests"
+    $Config.Run.PassThru = $true
+    $Config.TestResult.Enabled = $true
+    $Config.TestResult.OutputFormat = "NUnitXml"
+    $Config.TestResult.OutputPath = "$(build.sourcesDirectory)\TestResults.xml"
+    $Config.Output.Verbosity = "Detailed"
+    Invoke-Pester -Configuration $Config
+  name: test
+  displayName: 'Validate installed apps'
+  workingDirectory: $(build.sourcesDirectory)
+  errorActionPreference: continue
+  continueOnError: true
+
+- publish: "$(build.sourcesDirectory)\\InstalledApplications.csv"
+  artifact: InstalledApplications
+  continueOnError: true
+
+- publish: "$(build.sourcesDirectory)\\TestResults.xml"
+  artifact: TestResults
+  continueOnError: true
+
+- task: PublishTestResults@2
+  inputs:
+    testResultsFormat: "NUnit"
+    testResultsFiles: "$(build.sourcesDirectory)\\TestResults.xml"
+    failTaskOnFailedTests: true
+    testRunTitle: "Publish Pester results"

@@ -1,0 +1,10 @@
+[
+    {
+        "Name": "RemoteDesktopAnalyzer",
+        "FilesExist": [
+            "C:\\Program Files\\RemoteDisplayAnalyzer\\ExperienceIndicator.exe",
+            "C:\\Program Files\\RemoteDisplayAnalyzer\\RemoteDisplayAnalyzer.exe"
+        ],
+        "FilesNotExist": []
+    }
+]

@@ -1,0 +1,266 @@
+[
+    {
+        "Name": "MicrosoftFSLogixApps",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftFSLogixApps\" | Where-Object { $_.Channel -eq \"Production\" } | Select-Object -First 1",
+        "Installed": "Microsoft FSLogix Apps",
+        "FilesExist": [
+            "C:\\Program Files\\FSLogix\\Apps\\frx.exe",
+            "C:\\Program Files\\FSLogix\\Apps\\ConfigurationTool.exe",
+            "C:\\Program Files\\FSLogix\\Apps\\frxcontext.exe",
+            "C:\\Program Files\\FSLogix\\Apps\\frxshell.exe"
+        ],
+        "ShortcutsNotExist": [
+            "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\FSLogix\\FSLogix Apps Online Help.lnk"
+        ],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Microsoft.NET",
+        "Filter": "Get-EvergreenApp -Name \"Microsoft.NET\" | Where-Object { $_.Installer -eq \"windowsdesktop\" -and $_.Channel -eq \"LTS\" -and $_.Architecture -eq \"x64\" } | Select-Object -First 1",
+        "Installed": "Microsoft Windows Desktop Runtime - 8",
+        "FilesExist": [
+            "C:\\Program Files\\dotnet\\dotnet.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Microsoft.NET",
+        "Filter": "Get-EvergreenApp -Name \"Microsoft.NET\" | Where-Object { $_.Installer -eq \"windowsdesktop\" -and $_.Channel -eq \"Current\" -and $_.Architecture -eq \"x64\" } | Select-Object -First 1",
+        "Installed": "Microsoft Windows Desktop Runtime - 7",
+        "FilesExist": [
+            "C:\\Program Files\\dotnet\\dotnet.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "MicrosoftVcRedist2022x64",
+        "Filter": "Get-VcList -Release \"2022\" -Architecture \"x64\"",
+        "Installed": "Microsoft Visual C.*2015-2022 Redistributable.*x64",
+        "FilesExist": [],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "MicrosoftVcRedist2022x86",
+        "Filter": "Get-VcList -Release \"2022\" -Architecture \"x86\"",
+        "Installed": "Microsoft Visual C.*2015-2022 Redistributable.*x86",
+        "FilesExist": [],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "MicrosoftEdge",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftEdge\" | Where-Object { $_.Architecture -eq \"x64\" -and $_.Channel -eq \"Stable\" -and $_.Release -eq \"Enterprise\" } | Sort-Object -Property \"Version\" -Descending | Select-Object -First 1",
+        "Installed": "(^Microsoft Edge$)",
+        "FilesExist": [
+            "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\master_preferences"
+        ],
+        "ShortcutsNotExist": [
+            "C:\\Users\\Public\\Desktop\\Microsoft Edge*.lnk"
+        ],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "MicrosoftEdgeWebView2Runtime",
+        "Filter": "$InstalledSoftware | Where-Object { $_.Name -match \"MicrosoftEdgeWebView2Runtime\" } | Select-Object -First 1",
+        "Installed": "Microsoft Edge WebView2 Runtime",
+        "FilesExist": [],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "MicrosoftOneDrive",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftOneDrive\" | Where-Object { $_.Ring -eq \"Production\" -and $_.Type -eq \"Exe\" -and $_.Architecture -eq \"AMD64\" } | Sort-Object -Property @{ Expression = { [System.Version]$_.Version }; Descending = $true } | Select-Object -First 1",
+        "Installed": "Microsoft OneDrive",
+        "FilesExist": [
+            "C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "MicrosoftTeams",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftTeams\" | Where-Object { $_.Ring -eq \"General\" -and $_.Architecture -eq \"x64\" -and $_.Type -eq \"msi\" } | Select-Object -First 1",
+        "Installed": "Teams Machine-Wide Installer",
+        "FilesExist": [
+            "C:\\Program Files (x86)\\Teams Installer\\setup.json",
+            "C:\\Program Files (x86)\\Microsoft\\Teams\\setup.json",
+            "C:\\Program Files (x86)\\Teams Installer\\Teams.exe",
+            "C:\\Program Files (x86)\\Microsoft\\Teams\\Update.exe",
+            "C:\\Program Files (x86)\\Microsoft\\Teams\\current\\Teams.exe",
+            "C:\\Program Files (x86)\\Microsoft\\Teams\\current\\Squirrel.exe",
+            "C:\\Users\\Default\\AppData\\Roaming\\Microsoft\\Teams\\desktop-config.json"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Microsoft365Apps",
+        "Filter": "Get-EvergreenApp -Name \"Microsoft365Apps\" | Where-Object { $_.Channel -eq \"MonthlyEnterprise\" } | Select-Object -First 1",
+        "Installed": "Microsoft 365 Apps for enterprise",
+        "FilesExist": [
+            "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+            "C:\\Program Files\\Microsoft Office\\root\\Office16\\officeappguardwin32.exe",
+            "C:\\Program Files\\Microsoft Office\\root\\Office16\\protocolhandler.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "AdobeAcrobatReaderDC",
+        "Filter": "Get-EvergreenApp -Name \"AdobeAcrobatReaderDC\" | Where-Object { $_.Language -eq \"MUI\" -and $_.Architecture -eq \"x64\" } | Select-Object -First 1",
+        "Installed": "Adobe Acrobat.*64-bit",
+        "FilesExist": [
+            "C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\Acrobat.exe",
+            "C:\\Program Files\\Adobe\\Acrobat DC\\Acrobat\\AdobeCollabSync.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": [
+            "AdobeARMservice"
+        ]
+    },
+    {
+        "Name": "ZoomMeetings",
+        "Filter": "$InstalledSoftware | Where-Object { $_.Name -match \"Zoom Client for VDI\" } | Select-Object -First 1",
+        "Installed": "Zoom Client for VDI",
+        "FilesExist": [],
+        "ShortcutsNotExist": [
+            "C:\\Users\\Public\\Desktop\\Zoom VDI.lnk"
+        ],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Microsoft PowerToys",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftPowerToys\" | Where-Object { $_.Architecture -eq \"x64\" -and $_.InstallerType -eq \"Default\" }",
+        "Installed": "PowerToys*",
+        "FilesExist": [
+            "C:\\Program Files\\PowerToys\\PowerToys.exe",
+            "C:\\Program Files\\PowerToys\\PowerToys.FancyZones.exe",
+            "C:\\Program Files\\PowerToys\\PowerToys.FancyZonesEditor.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Greenshot",
+        "Filter": "Get-EvergreenApp -Name \"Greenshot\" | Where-Object { $_.Architecture -eq \"x86\" -and $_.Uri -match \"Greenshot-INSTALLER-\" } | Select-Object -First 1",
+        "Installed": "Greenshot*",
+        "FilesExist": [
+            "C:\\Program Files\\Greenshot\\Greenshot.exe",
+            "C:\\Program Files\\Greenshot\\unins000.exe",
+            "C:\\Program Files\\Greenshot\\greenshot-defaults.ini"
+        ],
+        "ShortcutsNotExist": [
+            "C:\\Users\\Public\\Desktop\\Greenshot.lnk",
+            "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Greenshot\\License.txt.lnk",
+            "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Greenshot\\Readme.txt.lnk",
+            "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Greenshot\\Uninstall Greenshot.lnk"
+        ],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "1Password",
+        "Filter": "Get-EvergreenApp -Name \"1Password\" | Select-Object -First 1",
+        "Installed": "1Password*",
+        "FilesExist": [
+            "C:\\Program Files\\1Password\\app\\8\\1Password.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "BeyondTrust Access Console",
+        "Filter": "",
+        "Installed": "Access Console*",
+        "FilesExist": [
+            "C:\\Program Files\\Bomgar\\Access Console\\insentragroup.beyondtrustcloud.com\\bomgar-acc.exe",
+            "C:\\Program Files\\Bomgar\\Access Console\\insentragroup.beyondtrustcloud.com\\bomgar-cli.exe",
+            "C:\\Program Files\\Bomgar\\Access Console\\insentragroup.beyondtrustcloud.com\\bomgar-rdp.exe"
+        ],
+        "ShortcutsNotExist": [
+            "C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Bomgar\\insentragroup.beyondtrustcloud.com\\www.beyondtrust.com.lnk"
+        ],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "DocNGen Word Addin",
+        "Filter": "",
+        "Installed": "DocNGen Word Addin*",
+        "FilesExist": [
+            "C:\\Program Files\\DocNGen\\DocNGen Word Addin\\DocNGen.dll",
+            "C:\\Program Files\\DocNGen\\DocNGen Word Addin\\DNGClass.dll",
+            "C:\\Program Files\\DocNGen\\DocNGen Word Addin\\DocNGen.vsto"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Kaseya Live Connect",
+        "Filter": "",
+        "Installed": "Live Connect*",
+        "FilesExist": [
+            "C:\\Program Files\\Kaseya Live Connect\\KaseyaLiveConnect.exe",
+            "C:\\Program Files\\Kaseya Live Connect\\Kaseya.AdminEndpoint.exe",
+            "C:\\Program Files\\Kaseya Live Connect\\KaseyaTerminal.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Microsoft Azure CLI",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftAzureCLI\" | Where-Object { $_.Type -eq \"msi\" } | Select-Object -First 1",
+        "Installed": "Microsoft Azure CLI*",
+        "FilesExist": [
+            "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\python.exe",
+            "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\pythonw.exe",
+            "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin\\az.cmd",
+            "C:\\Program Files (x86)\\Microsoft SDKs\\Azure\\CLI2\\wbin\\azps.ps1"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Microsoft Visual Studio Code",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftVisualStudioCode\" | Where-Object { $_.Architecture -eq \"x64\" -and $_.Platform -eq \"win32-x64\" -and $_.Channel -eq \"Stable\" } | Select-Object -First 1",
+        "Installed": "Microsoft Visual Studio Code*",
+        "FilesExist": [
+            "C:\\Program Files\\Microsoft VS Code\\Code.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Zoom Client for VDI",
+        "Filter": "",
+        "Installed": "Zoom Client for VDI*",
+        "FilesExist": [
+            "C:\\Program Files\\ZoomVDI\\bin\\Zoom.exe",
+            "C:\\Program Files\\ZoomVDI\\bin\\ZoomVDITool.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "Microsoft PowerShell",
+        "Filter": "Get-EvergreenApp -Name \"MicrosoftPowerShell\" | Where-Object { $_.Architecture -eq \"x64\" -and $_.Release -eq \"Stable\" } | Select-Object -First 1",
+        "Installed": "PowerShell*",
+        "FilesExist": [
+            "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    },
+    {
+        "Name": "1Password CLI",
+        "Filter": "",
+        "Installed": "1Password*",
+        "FilesExist": [
+            "C:\\Program Files\\1Password CLI\\op.exe",
+            "C:\\Program Files\\1Password CLI\\op.exe.sig"
+        ],
+        "ShortcutsNotExist": [],
+        "ServicesDisabled": []
+    }
+]
